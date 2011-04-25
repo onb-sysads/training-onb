@@ -1,0 +1,150 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.1.41-3ubuntu12.10
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema StudentRegistration
+--
+
+CREATE DATABASE IF NOT EXISTS StudentRegistration;
+USE StudentRegistration;
+CREATE TABLE  `StudentRegistration`.`classt` (
+  `classid` int(11) NOT NULL AUTO_INCREMENT,
+  `subjectid` int(11) NOT NULL,
+  `teacherid` int(11) NOT NULL,
+  `scheduleid` int(11) NOT NULL,
+  PRIMARY KEY (`classid`),
+  KEY `fk_classt_1` (`subjectid`),
+  KEY `fk_classt_2` (`teacherid`),
+  KEY `fk_classt_3` (`scheduleid`),
+  CONSTRAINT `fk_classt_1` FOREIGN KEY (`subjectid`) REFERENCES `subject` (`subjectid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_classt_2` FOREIGN KEY (`teacherid`) REFERENCES `teacher` (`teacherid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_classt_3` FOREIGN KEY (`scheduleid`) REFERENCES `schedule` (`scheduleid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE  `StudentRegistration`.`daysched` (
+  `dayschedid` int(11) NOT NULL AUTO_INCREMENT,
+  `days` varchar(10) NOT NULL,
+  PRIMARY KEY (`dayschedid`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+INSERT INTO `StudentRegistration`.`daysched` VALUES  (1,'mon-tue'),
+ (2,'tue-wed'),
+ (3,'wed-thurs'),
+ (4,'thurs-fri');
+CREATE TABLE  `StudentRegistration`.`schedule` (
+  `dayschedid` int(11) NOT NULL,
+  `timeschedid` int(11) NOT NULL,
+  `scheduleid` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`scheduleid`),
+  KEY `fk_schedule_1` (`dayschedid`),
+  KEY `fk_schedule_2` (`timeschedid`),
+  CONSTRAINT `fk_schedule_1` FOREIGN KEY (`dayschedid`) REFERENCES `daysched` (`dayschedid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_schedule_2` FOREIGN KEY (`timeschedid`) REFERENCES `timesched` (`timeschedid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE  `StudentRegistration`.`student` (
+  `studentid` int(11) NOT NULL AUTO_INCREMENT,
+  `studentfirstname` varchar(15) NOT NULL,
+  `studentlastname` varchar(15) NOT NULL,
+  `studentaddress` varchar(45) NOT NULL,
+  `studentcontact` varchar(12) NOT NULL,
+  PRIMARY KEY (`studentid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+INSERT INTO `StudentRegistration`.`student` VALUES  (1,'Gian','Lacerna','Quezon City','4162832'),
+ (2,'Minerva','Limcaoco','Laguna','4325465');
+CREATE TABLE  `StudentRegistration`.`studentclasses` (
+  `studentid` int(11) DEFAULT NULL,
+  `classid` int(11) DEFAULT NULL,
+  KEY `fk_studentclasses_1` (`studentid`),
+  KEY `fk_studentclasses_2` (`classid`),
+  CONSTRAINT `fk_studentclasses_1` FOREIGN KEY (`classid`) REFERENCES `classt` (`classid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_studentclasses_2` FOREIGN KEY (`studentid`) REFERENCES `student` (`studentid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE  `StudentRegistration`.`subject` (
+  `subjectid` int(11) NOT NULL AUTO_INCREMENT,
+  `subjectname` varchar(5) NOT NULL,
+  `subjectdesc` varchar(20) NOT NULL,
+  `subjecttypeid` int(11) NOT NULL,
+  PRIMARY KEY (`subjectid`),
+  KEY `fk_subject_1` (`subjectid`),
+  KEY `fk_subject_2` (`subjecttypeid`),
+  CONSTRAINT `fk_subject_2` FOREIGN KEY (`subjecttypeid`) REFERENCES `subjecttype` (`subjecttypeid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+INSERT INTO `StudentRegistration`.`subject` VALUES  (1,'CS101','JAVA',1),
+ (2,'CS102','OOP Concepts',1),
+ (3,'CS101','Advanced Java',2),
+ (4,'CS102','OOP and TDD',2);
+CREATE TABLE  `StudentRegistration`.`subjecttype` (
+  `subjecttypeid` int(11) NOT NULL AUTO_INCREMENT,
+  `subjecttype` varchar(20) NOT NULL,
+  PRIMARY KEY (`subjecttypeid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+INSERT INTO `StudentRegistration`.`subjecttype` VALUES  (1,'Undergraduate'),
+ (2,'Graduate');
+CREATE TABLE  `StudentRegistration`.`teacher` (
+  `teacherid` int(11) NOT NULL AUTO_INCREMENT,
+  `teacherfirstname` varchar(15) NOT NULL,
+  `teacherlastname` varchar(15) NOT NULL,
+  PRIMARY KEY (`teacherid`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+INSERT INTO `StudentRegistration`.`teacher` VALUES  (1,'James','Barbosa'),
+ (2,'Richie','Panganiban'),
+ (3,'Michael','Jordan'),
+ (4,'James','Gosling'),
+ (5,'Martin','Fowler'),
+ (6,'Theo','Jansen'),
+ (7,'Lenart','Green');
+CREATE TABLE  `StudentRegistration`.`timesched` (
+  `timeschedid` int(11) NOT NULL AUTO_INCREMENT,
+  `times` varchar(10) NOT NULL,
+  PRIMARY KEY (`timeschedid`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+INSERT INTO `StudentRegistration`.`timesched` VALUES  (1,'9am-10am'),
+ (2,'10am-11am'),
+ (3,'11am-12nn'),
+ (4,'12nn-1pm'),
+ (5,'1pm-2pm'),
+ (6,'2pm-3pm'),
+ (7,'3pm-4pm'),
+ (8,'4pm-5pm'),
+ (9,'5pm-6pm');
+CREATE TABLE  `StudentRegistration`.`useraccount` (
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(12) NOT NULL,
+  `password` varchar(12) NOT NULL,
+  `usertypeid` int(1) NOT NULL,
+  PRIMARY KEY (`userid`),
+  KEY `fk_useraccount_1` (`usertypeid`),
+  CONSTRAINT `fk_useraccount_1` FOREIGN KEY (`usertypeid`) REFERENCES `usertype` (`usertypeid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=100000 DEFAULT CHARSET=latin1;
+INSERT INTO `StudentRegistration`.`useraccount` VALUES  (1,'gian','gian',2),
+ (2,'mine','mine',2),
+ (99999,'admin','admin',1);
+CREATE TABLE  `StudentRegistration`.`usertype` (
+  `usertypeid` int(1) NOT NULL AUTO_INCREMENT,
+  `usertype` varchar(5) NOT NULL,
+  PRIMARY KEY (`usertypeid`),
+  KEY `fk_usertype_1` (`usertypeid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+INSERT INTO `StudentRegistration`.`usertype` VALUES  (1,'admin'),
+ (2,'user');
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
