@@ -1,0 +1,25 @@
+(User)Student:
+
+	Student getStudent()
+
+	void addClassToStudent()
+
+	Set<Class> getEnrolledClasses
+
+	Set<Class> getAvailableClasses()
+
+(User)Admin:
+
+	Set<Teacher> getAvailableTeachers()
+
+	Set<Subject> getAvaiableSubjects()
+
+	Set<Schedule> getAvailableSchedules()
+
+	void addClass( Class klass )
+
+Tuition Assessment
+
+	BigDecimal getTuitionAssessment(Student student)
+
+
