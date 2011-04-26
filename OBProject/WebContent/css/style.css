@@ -1,145 +1,82 @@
 @CHARSET "UTF-8";
 
+.container {
+	width:900px;
+	height: auto;
+	background-color: white;
+	margin: 0 auto;
+	overflow: hidden;
+	
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+}
 
+
+/* header */
 .header {
-	background-color: maroon;
-	padding-top:10px;
-	margin-left:100px;
-	margin-right:100px;
-	height: 150px;
-	align: middle;
-}
-
-.blank {
-background-color: maroon;
-margin-top:-20px;
-padding-right: 100px;
-margin-left:100px;
-margin-bottom:-20px;
-height:40px;
-width:77.5%;
-}
-#navmenu ul {
-	margin-top: 5px;
-	margin-bottom:-10px;
-	padding-left:100px; 
-	list-style-type: none;
-	list-style-image: none; 
-}
+	background-color: white;
 	
-#navmenu li {
-	display: inline; 
-}
-
-#navmenu ul li a {
-	text-decoration:none;  margin: 0px;
-	padding: 5px 73px 10px 72.5px; color: black;
-	background: orange;
-}
-	
-#navmenu ul li a:hover {
-	color: black;
-	background: maroon;
 }
 
 .header #title {
-	font-size: 50px;
-	padding-right:200px;
-	color: orange;
+font-size: 60px;
+color: #ea6f23;
+}
+
+.header #image {
+}
+
+.header #container {
+margin: 0 auto;
+width: 50%;
+}
+
+/* body */
+.body {
+	background-color: white;	
+	height: auto;
+	width: auto;
+}
+
+.body #image {
+	
 	
 }
 
-#loginTable  {
-	padding-left: 655px;
-	margin-top: -70px;
-	background-color: white;
-	width: 350px;
 
-}
-#loginTable td {
-	width: 50%;
+.body #loginform {
+margin-top: 10px;
+padding: 5px 20px 10px 10px;
+width: 450px;
+margin: 0 auto;
+width: 50%;
+background-color: white;
 }
 
-#loginTable #submitButton {
-	border-color: black;
-	border-style: groove;
-	background-color: maroon;
-	text-align:center;
-	white-space:nowrap;
-	color: orange;
+.body #loginform #status {
+color: red;
 }
 
 
-.loginform {
-	padding-top:150px;
+.body #loginform #loginformline {
+width: auto;
+}
+
+/* footer */
+.footer {
+	
+	height: 50px;
+	padding-top: 50px;
+	padding-bottom: 30px;
+	width: auto;
 	margin: 0 auto;
+	width:50%;
+	
 }
 
-
-p.status{
-	color: red;
-	font-size: 12px;
-	background-color:white;
-	align: center;
+.footer #footertext {
+	font-size: 12px;	
+	text-align: center;
 }
-
-body {
-	background-color: #D8D8D8 ;
-}
-
-.body #titlebody {
-	font-family: serif;
-	text-align: left;
-	padding-left:20px;
-	font-size: 20px;
-	color: white;
-	background-color: #3366FF;
-}
-
-.body .loginimage {
-position:absolute;
-padding-top:50px;
-left:250px;
-
-}
-
-
-.body {
-	margin-left: 100px;
-	margin-right: 100px;
-	height: 500px;
-	background-color: white;
-}
-.body #titleb {
-	position: relative;
-	top: -100px;
-	left:160px;
-	font-size: 30px;
-}
-.body #titlebodyline {
-	position: relative;
-	top:-110px;
-	left:300px;
-	width:400px;	
-}
-
-.body #titlebinfo {
-	position: relative;
-	top: -110px;
-	left:300px;
-	font-size: 15px;
-}
-
-.bottom {
-	background-color: #C0C0C0 ;
-	padding-bottom: 20px;
-	padding-top: 20px;
-	margin-left:100px;
-	margin-right:100px;
-	clear: both;
-}
-
-.bottom #bottomText {
-	font-size: 12px;
-}
-
+ 
