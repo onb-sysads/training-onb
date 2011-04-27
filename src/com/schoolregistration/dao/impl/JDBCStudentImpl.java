@@ -53,7 +53,7 @@ public class JDBCStudentImpl implements StudentDao {
 			
 			while(rs.next()) {
 				student = new Student(studentID, rs.getString("studentfirstname") , rs.getString("studentlastname")
-						, rs.getString("studentlastname"), rs.getString("studentcontact"));
+						, rs.getString("studentaddress"), rs.getString("studentcontact"));
 			}
 		}
 		catch(SQLException e) {

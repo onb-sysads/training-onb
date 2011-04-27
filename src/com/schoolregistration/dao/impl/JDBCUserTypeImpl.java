@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.schoolregistration.dao.DataAccessException;
+import com.schoolregistration.dao.UserTypeDao;
 import com.schoolregistration.serviceimpl.ConnectionFactory;
 
-public class JDBCUserTypeDAO {
+public class JDBCUserTypeImpl implements UserTypeDao{
 	
 	
 	Connection conn = null;
@@ -15,7 +19,7 @@ public class JDBCUserTypeDAO {
 	ResultSet rs = null;
 	
 	
-	public JDBCUserTypeDAO() {
+	public JDBCUserTypeImpl() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -25,8 +29,29 @@ public class JDBCUserTypeDAO {
 		return conn;
 	}
 	
+	@Override
+	public Set<String> getUserTypes() throws DataAccessException {
+		Set<String> userTypes = new HashSet<String>();
+		try {
+			Connection conn = ConnectionFactory.getInstance().getConnection();
+			String stringQuery = "SELECT * from usertype";
+			PreparedStatement pstmt = conn.prepareStatement(stringQuery);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				userTypes.add(rs.getString("usertype"));
+			}
+		} catch (SQLException e) {
+			//log
+			e.printStackTrace();
+		} finally {
+			closeResources();
+		}
+		return userTypes;
+	}
 	
-	public int getUserTypeIdByName(String name) {
+	@Override
+	public int getUserTypeIdByName(String name) throws DataAccessException {
 		int id = 0;
 		try {
 			Connection conn = getConnection();
@@ -69,12 +94,19 @@ public class JDBCUserTypeDAO {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DataAccessException {
 		
-		JDBCUserTypeDAO u = new JDBCUserTypeDAO();
+		JDBCUserTypeImpl u = new JDBCUserTypeImpl();
+		Set<String> t = u.getUserTypes();
+		for(String x : t) {
+			System.out.println(x);
+		}
+		
+		
 		
 		System.out.println(u.getUserTypeIdByName("student"));
 	}
+
 	
 
 }

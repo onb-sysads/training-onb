@@ -1,7 +1,7 @@
 package com.schoolregistration.serviceimpl;
 
 import com.com.schoolregistration.services.StudentAdministration;
-import com.com.schoolregistration.services.StudentAdministrationException;
+import com.com.schoolregistration.services.ServiceException;
 import com.schoolregistration.dao.DataAccessException;
 import com.schoolregistration.dao.StudentDao;
 import com.schoolregistration.dao.impl.JDBCStudentImpl;
@@ -20,7 +20,7 @@ public class StudentAdministrationImpl implements StudentAdministration{
 	}
 
 	@Override
-	public Student getStudent(int userId) throws StudentAdministrationException {
+	public Student getStudent(int userId) throws ServiceException {
 		
 		Student stud = null;
 		
@@ -32,6 +32,14 @@ public class StudentAdministrationImpl implements StudentAdministration{
 		}
 		
 		return stud;
+	}
+	
+	public static void main(String[] args) throws ServiceException {
+		StudentAdministrationImpl std = new StudentAdministrationImpl();
+		Student d = std.getStudent(1);
+		
+		System.out.println(d.toString());
+		
 	}
 	
 	

@@ -1,4 +1,4 @@
-<%@ page import="com.schoolregistration.serviceimpl.*, java.sql.*" language="java" contentType="text/html; charset=UTF-8"
+<%@ page import="com.schoolregistration.serviceimpl.*, java.sql.*, java.util.*" language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -50,13 +50,10 @@
 									
 									<select name="usertype">
 										<%
-											Connection conn = ConnectionFactory.getInstance().getConnection();
-											String stringQuery = "SELECT * from usertype";
-											PreparedStatement pstmt = conn.prepareStatement(stringQuery);
-											ResultSet rs = pstmt.executeQuery();
-											while(rs.next()) {
-												out.print("<option>"+rs.getString("usertype")+"</option>");
-											}
+											UserTypeAdministrationImpl uta = new UserTypeAdministrationImpl();
+											Set<String> userTypes = uta.getUserTypes();
+											for(String types : userTypes) 
+												out.print("<option>"+types+"</option>");
 										%>
 									</select>
 								
