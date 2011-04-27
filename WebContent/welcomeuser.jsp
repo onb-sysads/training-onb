@@ -1,4 +1,7 @@
+<%@page import="com.schoolregistration.serviceimpl.StudentAdministrationImpl"%>
+<%@page import="com.com.schoolregistration.services.StudentAdministration"%>
 <%@page import="com.schoolregistration.dao.impl.JDBCStudentImpl"%>
+<%@page import="com.schoolregistration.domain.Student;" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,8 +48,15 @@
 			<div class="body">
 				
 				<%
-							
-				
+						Integer userid = (Integer)session.getAttribute("userid");	
+						StudentAdministrationImpl sa = new StudentAdministrationImpl();
+						Student stud = sa.getStudent(userid);
+						out.print("<p> PROFILE: </p>");
+						out.print("<p> ID No.: " + stud.getStudentId() + "</p>");
+						out.print("<p> First Name: " + stud.getStudentFirstName() + "</p>");
+						out.print("<p> Last Name: " + stud.getStudentLastName() + "</p>");
+						out.print("<p> Address: " + stud.getStudentAddress() + "</p>");
+						out.print("<p> Contact No: " + stud.getStudentContact() + "</p>");
 				%>
 				
 			</div>

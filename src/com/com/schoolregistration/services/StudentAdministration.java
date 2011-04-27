@@ -5,7 +5,7 @@ import com.schoolregistration.domain.Student;
 
 public interface StudentAdministration {
 	
-	public Student getStudent(int userId) throws StudentAdministrationException;
+	public Student getStudent(int userId) throws ServiceException;
 	
 
 }

@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.schoolregistration.dao.impl.JDBCUserTypeDAO;
+import com.schoolregistration.dao.DataAccessException;
+import com.schoolregistration.dao.impl.JDBCUserTypeImpl;
 
 
 
@@ -53,8 +54,14 @@ public class Authentication extends HttpServlet {
 			String passwordInput = request.getParameter("password");
 			
 			String userTypeInput = request.getParameter("usertype");
-			JDBCUserTypeDAO userTypeDAO = new JDBCUserTypeDAO();
-			int userTypeID =  userTypeDAO.getUserTypeIdByName(userTypeInput);
+			JDBCUserTypeImpl userTypeDAO = new JDBCUserTypeImpl();
+			int userTypeID = 1;
+			try {
+				userTypeID = userTypeDAO.getUserTypeIdByName(userTypeInput);
+			} catch (DataAccessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 				try {
 					
@@ -72,6 +79,7 @@ public class Authentication extends HttpServlet {
 							String dataUsername = resultSet.getString("username");
 							String dataPassword = resultSet.getString("password");
 							int dataUsertype = resultSet.getInt("usertypeid");
+							int userId = resultSet.getInt("userid");
 							
 							if(usernameInput.equals(dataUsername)) {
 								
@@ -79,7 +87,7 @@ public class Authentication extends HttpServlet {
 									
 								    switch(dataUsertype) {
 									    case 1: {
-									    	validStudentRedirection(request,response, usernameInput);
+									    	validStudentRedirection(request,response, usernameInput, userId);
 									    }
 									    case 2: {
 									    }
@@ -127,10 +135,12 @@ public class Authentication extends HttpServlet {
 	}
 
 	private void validStudentRedirection(HttpServletRequest request,
-			HttpServletResponse response, String usernameInput)
+			HttpServletResponse response, String usernameInput, int userid)
 			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("Username",usernameInput);
+		session.setAttribute("userid",userid);
 		RequestDispatcher view = request.getRequestDispatcher("welcomeuser.jsp");
 		view.forward(request, response);
 	}
