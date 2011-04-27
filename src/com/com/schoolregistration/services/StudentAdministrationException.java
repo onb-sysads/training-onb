@@ -1,4 +1,4 @@
-package com.services;
+package com.com.schoolregistration.services;
 
 public class StudentAdministrationException extends Exception {
 

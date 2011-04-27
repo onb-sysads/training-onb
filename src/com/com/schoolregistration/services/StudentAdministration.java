@@ -1,4 +1,4 @@
-package com.services;
+package com.com.schoolregistration.services;
 
 import com.schoolregistration.domain.Student;
 

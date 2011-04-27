@@ -1,11 +1,11 @@
-package com.service.impl;
+package com.schoolregistration.serviceimpl;
 
+import com.com.schoolregistration.services.StudentAdministration;
+import com.com.schoolregistration.services.StudentAdministrationException;
 import com.schoolregistration.dao.DataAccessException;
 import com.schoolregistration.dao.StudentDao;
 import com.schoolregistration.dao.impl.JDBCStudentImpl;
 import com.schoolregistration.domain.Student;
-import com.services.StudentAdministration;
-import com.services.StudentAdministrationException;
 
 public class StudentAdministrationImpl implements StudentAdministration{
 	
