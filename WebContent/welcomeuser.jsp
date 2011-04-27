@@ -1,3 +1,4 @@
+<%@page import="com.schoolregistration.dao.impl.JDBCStudentImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -43,28 +44,11 @@
 		
 			<div class="body">
 				
-				<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-				Duis malesuada, libero non iaculis fermentum, justo tellus 
-				facilisis metus, eget ullamcorper erat purus id neque. 
-				Nullam quis velit nulla. Ut placerat velit et leo viverra 
-				facilisis. Aenean pharetra urna quis nibh mollis rhoncus. 
-				Duis lobortis tortor at dolor tempor nec elementum leo ullamcorper. 
-				Donec et risus ut tellus tempus congue eget mollis leo. 
-				Suspendisse dictum dolor id justo lacinia quis ornare leo ullamcorper. 
-				Duis vehicula, arcu id venenatis dapibus, nisl sem porttitor purus, eget bibendum leo nunc et erat. 
-				Fusce rhoncus eleifend suscipit. Integer nec felis vitae erat varius tincidunt. 
-				Praesent mollis rutrum erat, sit amet porta velit ultrices sed. 
-				Mauris et neque nulla, et feugiat lorem. 
-				Praesent congue porta metus, sit amet pharetra dui gravida sed. 
-				Pellentesque accumsan nulla sed ligula tempor facilisis. 
-				Etiam a massa diam. Suspendisse hendrerit aliquam tincidunt. 
-				Duis laoreet, mi quis imperdiet pulvinar, justo dui faucibus lectus, eget iaculis enim nibh id neque. Nulla dignissim faucibus quam, id scelerisque ipsum tristique vitae. Ut urna enim, varius eu semper non, tincidunt ultrices ligula. Maecenas condimentum convallis condimentum.
-
-				Aenean sed nunc sit amet sem dignissim placerat. Nulla laoreet, ipsum sit amet sagittis mattis, massa nunc ullamcorper nibh, sed ornare odio tortor id mauris. Pellentesque et enim lacus. Nullam massa dolor, adipiscing eu fringilla vestibulum, congue vel dolor. Ut et sapien augue, vitae varius enim. Cras facilisis lectus quis leo tempus malesuada. Morbi tincidunt condimentum mi at sodales. Vivamus ut ante odio. Integer vel diam ligula. Integer nec lectus purus. Mauris semper tristique enim, nec adipiscing quam ornare et. Cras orci nulla, pellentesque a hendrerit vitae, tempor a sem. Etiam eget odio ac augue scelerisque hendrerit nec non sem. Nam lobortis, sem id porta scelerisque, turpis odio venenatis nunc, sed interdum purus tellus id sem.
-
+				<%
+							
 				
-				</p>
+				%>
+				
 			</div>
 	 
 			<div class="footer">

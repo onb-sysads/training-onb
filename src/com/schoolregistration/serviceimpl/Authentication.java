@@ -1,4 +1,4 @@
-package com.mysql;
+package com.schoolregistration.serviceimpl;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.impl.JDBCUserTypeDAO;
+import com.schoolregistration.dao.impl.JDBCUserTypeDAO;
 
 
 
@@ -41,7 +41,7 @@ public class Authentication extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ConnectionFactory cm =  com.mysql.ConnectionFactory.getInstance();
+		ConnectionFactory cm =  com.schoolregistration.serviceimpl.ConnectionFactory.getInstance();
 		
 		Connection conn = cm.getConnection();
 		
@@ -69,7 +69,6 @@ public class Authentication extends HttpServlet {
 						while(resultSet.next()) {
 							
 							resultSetHasNoResults = false;
-							
 							String dataUsername = resultSet.getString("username");
 							String dataPassword = resultSet.getString("password");
 							int dataUsertype = resultSet.getInt("usertypeid");
@@ -121,7 +120,7 @@ public class Authentication extends HttpServlet {
 	}
 
 	private void invalidPasswordRedirection(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+		HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("Status","Wrong password!!!");
 		RequestDispatcher view = request.getRequestDispatcher("login.jsp");
 		view.forward(request, response);

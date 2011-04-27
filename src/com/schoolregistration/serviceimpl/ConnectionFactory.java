@@ -1,4 +1,4 @@
-package com.mysql;
+package com.schoolregistration.serviceimpl;
 import java.sql.*;
 
 public class ConnectionFactory {

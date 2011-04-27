@@ -14,7 +14,7 @@
     <description></description>
     <display-name>Authentication</display-name>
     <servlet-name>Authentication</servlet-name>
-    <servlet-class>com.mysql.Authentication</servlet-class>
+    <servlet-class>com.schoolregistration.serviceimpl.Authentication</servlet-class>
   </servlet>
   
   <servlet-mapping>	

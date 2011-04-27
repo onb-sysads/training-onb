@@ -1,11 +1,11 @@
-package com.dao.impl;
+package com.schoolregistration.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.ConnectionFactory;
+import com.schoolregistration.serviceimpl.ConnectionFactory;
 
 public class JDBCUserTypeDAO {
 	
