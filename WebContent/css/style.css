@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+.container {
+	width:900px;
+	height: auto;
+	background-color: white;
+	margin: 0 auto;
+	overflow: hidden;
+	
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+}
+
+
+/* header */
+.header {
+	background-color: white;
+	
+}
+
+.header #title {
+font-size: 60px;
+color: #ea6f23;
+}
+
+#usernavmenu { width: 80%; height: 43px; background: #dDD ; font-size: 0.8em; font-family: "Lucida Grande", Verdana, sans-serif; font-weight: bold; list-style-type: none; margin: 0 auto; padding: 0; }
+#usernavmenu li { display: block; float: left; margin: 0 0 0 5px; }
+#usernavmenu li a { height: 43px; color: #777; text-decoration: none; display: block; float: left; line-height: 200%; padding: 8px 15px 0; }
+#usernavmenu li a:hover { color: #222; }
+#usernavmenu li a.current{ color: #FFF; background: #FFF  ; padding: 5px 15px 0; }
+
+
+.header #container {
+	margin: 0 auto;
+	width: 50%;
+}
+
+.header #welcometag {
+	text-align: right;
+	padding-right: 95px;
+		
+}
+
+/* body */
+.body {
+	background-color: white;	
+	height: auto;
+	width: 70%;
+	margin: 0 auto;
+	
+}
+
+.body #image {
+	
+	
+}
+
+
+.body #loginform {
+margin-top: 10px;
+padding: 5px 20px 10px 10px;
+width: 450px;
+margin: 0 auto;
+width: 50%;
+background-color: white;
+}
+
+.body #loginform #status {
+color: red;
+}
+
+.body #loginform #loginformtitle {
+font-size: 20px;
+font-weight: bold;
+}
+
+.body #loginform #loginformline {
+width: auto;
+}
+
+.body #loginform #loginforminfo {
+text-align: center;
+font-size: 15px;
+}
+
+/* footer */
+.footer {
+	
+	height: 50px;
+	padding-top: 50px;
+	padding-bottom: 30px;
+	width: auto;
+	margin: 0 auto;
+	width:50%;
+	
+}
+
+.footer #footertext {
+	font-size: 12px;	
+	text-align: center;
+}
+ 
